@@ -196,15 +196,15 @@ int main(const int argc, const char **argv) {
     if (programOptions.output_type == OutputType::verbose)
         std::cout << "Determine line type (" << preflightConfigDownload.concurrency << ") "  << std::flush;
     double preSpeed = 0;
-    if (!sp.downloadSpeed(serverInfo, preflightConfigDownload, preSpeed, [&programOptions](bool success){
-        if (programOptions.output_type == OutputType::verbose)
-            std::cout << (success ? '.' : '*') << std::flush;
-    })){
-        std::cerr << "Pre-flight check failed." << std::endl;
-        if (programOptions.output_type == OutputType::json)
-            std::cout << "\"error\":\"pre-flight check failed\"}" << std::endl;
-        return EXIT_FAILURE;
-    }
+    // if (!sp.downloadSpeed(serverInfo, preflightConfigDownload, preSpeed, [&programOptions](bool success){
+    //     if (programOptions.output_type == OutputType::verbose)
+    //         std::cout << (success ? '.' : '*') << std::flush;
+    // })){
+    //     std::cerr << "Pre-flight check failed." << std::endl;
+    //     if (programOptions.output_type == OutputType::json)
+    //         std::cout << "\"error\":\"pre-flight check failed\"}" << std::endl;
+    //     return EXIT_FAILURE;
+    // }
 
     if (programOptions.output_type == OutputType::verbose)
         std::cout << std::endl;

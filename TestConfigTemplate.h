@@ -99,21 +99,32 @@ const TestConfig fiberConfigUpload = {
         "Fiber / Lan line type detected: profile selected fiber"
 };
 
+const TestConfig balancedConfig = {
+    100000,   // start_size: 100 KB
+    10000000, // max_size: 10 MB
+    10000,   // inc_size: 10 KB steps
+    4096,     // buff_size
+    25000,    // min_test_time_ms: 15 seconds minimum test time
+    1,        // concurrency: single stream
+    "Balanced test for wide range speeds"
+};
+
 void testConfigSelector(const double preSpeed, TestConfig& uploadConfig, TestConfig& downloadConfig){
-    uploadConfig   = slowConfigUpload;
-    downloadConfig = slowConfigDownload;
+    uploadConfig   = balancedConfig;
+    downloadConfig = balancedConfig;
 
-
-    if (preSpeed > 4 && preSpeed <= 30){
-        downloadConfig = narrowConfigDownload;
-        uploadConfig   = narrowConfigUpload;
-    } else if (preSpeed > 30 && preSpeed < 150) {
-        downloadConfig = broadbandConfigDownload;
-        uploadConfig   = broadbandConfigUpload;
-    } else if (preSpeed >= 150) {
-        downloadConfig = fiberConfigDownload;
-        uploadConfig   = fiberConfigUpload;
-    }
+//  uploadConfig   = slowConfigUpload;
+//     downloadConfig = slowConfigDownload;
+//     if (preSpeed > 4 && preSpeed <= 30){
+//         downloadConfig = narrowConfigDownload;
+//         uploadConfig   = narrowConfigUpload;
+//     } else if (preSpeed > 30 && preSpeed < 150) {
+//         downloadConfig = broadbandConfigDownload;
+//         uploadConfig   = broadbandConfigUpload;
+//     } else if (preSpeed >= 150) {
+//         downloadConfig = fiberConfigDownload;
+//         uploadConfig   = fiberConfigUpload;
+//     }
 
 }
 
